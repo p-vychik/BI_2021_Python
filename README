@@ -1,0 +1,14 @@
+NuAcTool is the command-line script for
+automation of basic operations on sequences of the nucleic acids.
+The following operations are supported:
+*coding DNA transcribing;
+*reverse transcription of RNA;
+*reverting 5' and 3' ends of RNA or DNA sequence;
+*building a complementary strand for RNA or DNA,
+complementing RNA for DNA input or DNA for RNA input sequences
+is not supported;
+*building reverse complement strand for RNA or DNA
+input sequence, the same limitation as for building complementary strands;
+
+Orientation of the input sequence is assumed to be in 5'-3' direction,
+U and T bases in the same sequence is not considered as correct input.  
