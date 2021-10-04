@@ -17,14 +17,14 @@ MASS = {
 }
 
 VOLUME = {
-        'barrel':119.240471,
-        'gallon':3.785411784,
+        'barrel':119.240471,        
         'pint':0.473176473,
+        'gallon':3.785411784,
         'ounce':29.573531,
         'litre':1,
 }
 DISTANCE = {
-        'km':1000,
+        'kilometer':1000,
         'yard':0.9144,
         'mile':1609.344,
         'inch':0.0254,
