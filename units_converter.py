@@ -12,7 +12,7 @@ MASS = {
         'pound':453.59237,
         'ounce':28.349523125,
         'grain':0.006479891,
-        'kilogram':1000,
+        'kg':1000,
         'carat':0.2,
 }
 
@@ -24,7 +24,7 @@ VOLUME = {
         'litre':1,
 }
 DISTANCE = {
-        'kilometer':1000,
+        'km':1000,
         'yard':0.9144,
         'mile':1609.344,
         'inch':0.0254,
