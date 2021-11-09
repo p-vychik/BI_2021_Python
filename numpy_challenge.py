@@ -74,6 +74,7 @@ def compute_pair_distances(a):
                 d[i][j] = np.sqrt(np.sum((a[i] - a[j]) ** 2))
     return d
 
+
 if __name__ == "__main__":
     # first way
     one_diag_1 = np.array([[1, 0, 0], [0, 1, 0], [0, 0, 1]])
@@ -83,3 +84,5 @@ if __name__ == "__main__":
     one_diag_3 = np.zeros((3, 3))
     for i in range(0, one_diag_3.shape[0]):
         one_diag_3[i][i] = 1
+
+        
