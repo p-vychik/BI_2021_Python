@@ -84,5 +84,3 @@ if __name__ == "__main__":
     one_diag_3 = np.zeros((3, 3))
     for i in range(0, one_diag_3.shape[0]):
         one_diag_3[i][i] = 1
-
-        
