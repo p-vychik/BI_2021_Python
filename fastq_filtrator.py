@@ -50,9 +50,9 @@ FILTERS = [passed_gc_filter,
 
 def main(input_fastq, output_file_prefix, gc_bounds=(0, 100), length_bounds='2**32', quality_threshold=0,
          save_filtered=False):
-    threshold_dict = {"gc_bounds" : gc_bounds,
-                      "length_bounds" : length_bounds,
-                      "quality_threshold" : quality_threshold}
+    threshold_dict = {"gc_bounds": gc_bounds,
+                      "length_bounds": length_bounds,
+                      "quality_threshold": quality_threshold}
     filtered_reads = []
     passed_filters_reads = []
     with open(input_fastq, 'r') as f:
