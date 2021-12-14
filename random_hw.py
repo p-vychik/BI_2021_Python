@@ -115,6 +115,7 @@ def sierpinski_triangle(steps):
     ax.set_title("Sierpinski's Triangle, random generation")
     plt.show()
 
+
 def permutator(word):
     letters = list(word)
     if 0 <= len(letters) <= 3:
@@ -135,4 +136,4 @@ if __name__ == "__main__":
     check_sorting()
     random_walk()
     sierpinski_triangle(5000)
-    #text_shuffler("По результатам илссоевадний одонго анлигсйокго унвиертисета, не иеемт занчнеия, ")
+    text_shuffler("По результатам илссоевадний одонго анлигсйокго унвиертисета, не иеемт занчнеия, ")
