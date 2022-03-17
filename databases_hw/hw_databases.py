@@ -6,7 +6,7 @@ import sys
 
 
 def create_table(tables, db, connection):
-    for _, query in tables.items():        
+    for _, query in tables.items():
         connection.execute("".join(query))
     connection.commit
 
@@ -26,7 +26,7 @@ def fill_table(query, values, connection):
         columns = ", ".join(get_columns(query))
         sql_code = f"INSERT INTO {table_name}({columns}) VALUES ({sub_values})"
         try:
-            if len(values)>1:
+            if len(values) > 1:
                 connection.executemany(sql_code, (values))
             else:
                 connection.execute(sql_code, (values))
@@ -71,40 +71,42 @@ if __name__ == "__main__":
     # provide path to table locations
     base_path = "data/"
     csv_files_names = {
-        f"{base_path}metadata.csv": ["CREATE TABLE IF NOT EXISTS meta(",
-                "ind INTEGER,",
-                "dna_chip_id TEXT PRIMARY KEY,",
-                "breed TEXT,",
-                "sex TEXT)"],
-        f"{base_path}genstudio.csv": ["CREATE TABLE IF NOT EXISTS genstudio(",
-                    "ind INTEGER PRIMARY KEY,",
-                    "SNP_name TEXT,",
-                    "SNP_Index INTEGER,",
-                    "SNP_Aux INTEGER,",
-                    "Sample_ID TEXT NOT NULL REFERENCES meta(dna_chip_id),",
-                    "SNP TEXT,",
-                    "Allele1_Top TEXT,",
-                    "Allele2_Top TEXT,",
-                    "Allele1_Forward TEXT,",
-                    "Allele2_Forward TEXT,",
-                    "Allele1_AB TEXT,",
-                    "Allele2_AB TEXT,",
-                    "Chr INTEGER,",
-                    "Position INTEGER,",
-                    "GC_Score REAL,",
-                    "GT_Score REAL,",
-                    "Theta REAL,",
-                    "R REAL,",
-                    "B_Allele_Freq REAL,",
-                      "Log_R_Ratio REAL)",]
-                    }
+        f"{base_path}metadata.csv": [
+                                    "CREATE TABLE IF NOT EXISTS meta(",
+                                    "ind INTEGER,",
+                                    "dna_chip_id TEXT PRIMARY KEY,",
+                                    "breed TEXT,",
+                                    "sex TEXT)"],
+        f"{base_path}genstudio.csv": [
+                                    "CREATE TABLE IF NOT EXISTS genstudio(",
+                                    "ind INTEGER PRIMARY KEY,",
+                                    "SNP_name TEXT,",
+                                    "SNP_Index INTEGER,",
+                                    "SNP_Aux INTEGER,",
+                                    "Sample_ID TEXT NOT NULL REFERENCES meta(dna_chip_id),",
+                                    "SNP TEXT,",
+                                    "Allele1_Top TEXT,",
+                                    "Allele2_Top TEXT,",
+                                    "Allele1_Forward TEXT,",
+                                    "Allele2_Forward TEXT,",
+                                    "Allele1_AB TEXT,",
+                                    "Allele2_AB TEXT,",
+                                    "Chr INTEGER,",
+                                    "Position INTEGER,",
+                                    "GC_Score REAL,",
+                                    "GT_Score REAL,",
+                                    "Theta REAL,",
+                                    "R REAL,",
+                                    "B_Allele_Freq REAL,",
+                                    "Log_R_Ratio REAL)"]
+    }
     csv_to_db(csv_files_names, "genlibrary.db")
     connect = sqlite3.connect("genlibrary.db")
     print("count distinct SNPs for all Sample_id")
     res = get_distinct_values("Sample_ID", "SNP", "genstudio", connect)
     print(res)
     print("update table meta - change sex for specific dna_chip_id")
-    update_table("meta", "sex" , "Y", "dna_chip_id = '202341831127R04C02'", connect)
+    update_table("meta", "sex", "Y", "dna_chip_id = '202341831127R04C02'", connect)
     print("check if updates are saved")
     sql_code = "SELECT * FROM meta WHERE sex = 'Y'"
     res = connect.execute(sql_code).fetchall()
